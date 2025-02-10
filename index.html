@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <canvas id="myChart1" style="width: 1800px; height:500px"></canvas>
+        <canvas id="myChart2" style="width: 1800px; height:500px"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const dataList1 = [
+                    {x:0, y:20 ,year: 2023 , date:'10-10-2023'},
+                    {x:1, y:30 ,year: 2023 , date:'10-10-2023'},
+                    {x:400, y:20 ,year: 2023 , date:'10-10-2023'},
+                    {x:500, y:30 ,year: 2023 , date:'10-10-2023'},
+                    {x:600, y:40 ,year: 2023 , date:'10-10-2023'},
+                    {x:800, y:20 ,year: 2023 , date:'10-10-2023'},
+                    {x:900, y:30 ,year: 2023 , date:'10-10-2023'},
+                    {x:1000, y:40, year: 2023 , date:'10-10-2023'},
+                    {x:2000, y:60, year: 2023 , date:'10-10-2023'},
+                    {x:3000, y:20, year: 2023 , date:'10-10-2023'},
+                    {x:4000, y:30, year: 2023 , date:'10-10-2023'},
+                    {x:5000, y:40, year: 2023 , date:'10-10-2023'},
+                    {x:6000, y:50, year: 2023 , date:'10-10-2023'},
+                    {x:7000, y:60, year: 2023 , date:'10-10-2023'},
+                    {x:8000, y:55, year: 2023 , date:'10-10-2023'},
+                    {x:9000, y:45, year: 2023 , date:'10-10-2023'},
+                    {x:10000, y:25, year: 2023 , date:'10-10-2023'},
+                    {x:12000, y:35, year: 2023 , date:'10-10-2023'},
+                    {x:13000, y:45, year: 2023 , date:'10-10-2023'},
+                    {x:14000, y:54, year: 2023 , date:'10-10-2023'},
+                    {x:15000, y:48, year: 2023 , date:'10-10-2023'},
+                    {x:16000, y:47, year: 2023 , date:'10-10-2023'},
+                    {x:17000, y:35 , year: 2023 , date:'10-10-2023'},
+                    {x:18000, y:38,year: 2024 , date:'10-10-2023'},
+                    {x:19000, y:39, year: 2024 , date:'10-10-2023'},
+                    {x:20000, y:40, year: 2024 , date:'10-10-2023'},
+                    {x:21000, y:37, year: 2024 , date:'10-10-2023'},
+                    {x:22000, y:59, year: 2024 , date:'10-10-2023'},
+                    {x:23000, y:39, year: 2025 , date:'10-10-2023'},
+                    {x:24000, y:47, year: 2025 , date:'10-10-2023'},
+                    {x:25000, y:23, year: 2025 , date:'10-10-2023'},
+                    {x:26000, y:34, year: 2025 , date:'10-10-2023'},
+                    {x:27000, y:27, year: 2025 , date:'10-10-2023'},
+                    {x:28000, y:65, year: 2025 , date:'10-10-2023'},
+                    {x:61650, y:60, year: 2025 , date:'10-10-2023'},
+        ]
+        const dataList2 = [
+                    {x:0, y:0 , year: 2023, date:'10-10-2023'},
+                    {x:1, y:1 ,year: 2023 , date:'10-10-2023'},
+                    {x:400, y:2 ,year: 2023 , date:'10-10-2023'},
+                    {x:500, y:3 ,year: 2023 , date:'10-10-2023'},
+                    {x:600, y:5 ,year: 2023 , date:'10-10-2023'},
+                    {x:800, y:6 ,year: 2023 , date:'10-10-2023'},
+                    {x:900, y:7 ,year: 2023 , date:'10-10-2023'},
+                    {x:1000, y:8, year: 2023 , date:'10-10-2023'},
+                    {x:2000, y:9, year: 2023 , date:'10-10-2023'},
+                    {x:3000, y:10, year: 2023 , date:'10-10-2023'},
+                    {x:4000, y:11, year: 2023 , date:'10-10-2023'},
+                    {x:5000, y:12, year: 2023 , date:'10-10-2023'},
+                    {x:6000, y:13, year: 2023 , date:'10-10-2023'},
+                    {x:7000, y:15, year: 2023 , date:'10-10-2023'},
+                    {x:8000, y:14, year: 2023 , date:'10-10-2023'},
+                    {x:9000, y:16, year: 2023 , date:'10-10-2023'},
+                    {x:10000, y:17, year: 2023 , date:'10-10-2023'},
+                    {x:12000, y:18, year: 2023 , date:'10-10-2023'},
+                    {x:13000, y:19, year: 2023 , date:'10-10-2023'},
+                    {x:14000, y:20, year: 2023 , date:'10-10-2023'},
+                    {x:15000, y:16, year: 2023 , date:'10-10-2023'},
+                    {x:16000, y:18, year: 2023 , date:'10-10-2023'},
+                    {x:17000, y:15 , year: 2023 , date:'10-10-2023'},
+                    {x:18000, y:10,year: 2024 , date:'10-10-2023'},
+                    {x:19000, y:8, year: 2024 , date:'10-10-2023'},
+                    {x:20000, y:7, year: 2024 , date:'10-10-2023'},
+                    {x:21000, y:20, year: 2024 , date:'10-10-2023'},
+                    {x:22000, y:15, year: 2024 , date:'10-10-2023'},
+                    {x:23000, y:5, year: 2025 , date:'10-10-2023'},
+                    {x:24000, y:10, year: 2025 , date:'10-10-2023'},
+                    {x:25000, y:1, year: 2025 , date:'10-10-2023'},
+                    {x:26000, y:0, year: 2025 , date:'10-10-2023'},
+                    {x:27000, y:10, year: 2025 , date:'10-10-2023'},
+                    {x:28000, y:5, year: 2025 , date:'10-10-2023'},
+                    {x:61650, y:15, year: 2025 , date:'10-10-2023'},
+        ]
+        const data = [];
+        const data2 = [];
+        let prev = 500;
+        let prev2 = 800;
+        for (let i = 0; i <= 61650; i++) {
+            prev += 5 - Math.random() * 10;
+            data.push({x: i, y: prev});
+            prev2 += 5 - Math.random() * 10;
+            data2.push({x: i, y: prev2});
+        }
+        const sortData = (list1=[], list2=[]) =>{
+            const list = [...list1 , ...list2]
+            return list.sort((a,b)=>{
+                if(a.year === b.year) {
+                    return a.x - b.x;
+                }
+                return a.year - b.year;
+            })
+        }
+
+        const getListOfXData = (sortedData=[]) =>{
+            const years = [];
+            const valueList = [];
+            sortedData.forEach(element => {
+                if(years.length === 0 || !years.includes(element.year)){
+                    valueList.push(element)
+                    years.push(element.year)
+                }
+            });
+            return valueList;
+        }
+        // plugin
+        const lineMarker = {
+                id: 'lineMarker',
+                beforeDatasetsDraw: (chart, args, plugins) => {
+                    const { ctx, chartArea:{ top, bottom, left, right }, scales: {x} } = chart;
+                    const sortList = sortData(dataList1,dataList2);
+                    const verticalLines  = getListOfXData(sortList);
+                    ctx.save();
+                    verticalLines.forEach(line => {
+
+                        const xPosition = x.getPixelForValue(line.x);
+                        // Draw the vertical line
+                        ctx.beginPath();
+                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = '#d0afe1';
+                        ctx.setLineDash([5, 5]);
+                        ctx.moveTo(xPosition, top);
+                        ctx.lineTo(xPosition, bottom);
+                        ctx.stroke();
+
+                        // Draw rounded pill for year label
+                        const pillWidth = 40;
+                        const pillHeight = 20;
+                        const pillX = xPosition - pillWidth / 2;
+                        const pillY = top + 3; // Inside the graph area
+
+                        // Draw pill background behind the gridlines
+                        ctx.beginPath();
+                        ctx.fillStyle = 'rgba(0,0,0,0.8)';
+                        ctx.strokeStyle = 'rgba(0,0,0,0.8)';
+                        ctx.setLineDash([0, 0]);
+                        ctx.lineWidth = 0;
+                        ctx.roundRect(pillX, pillY, pillWidth, pillHeight, 10);
+                        ctx.fill();
+                        ctx.stroke();
+
+                        // Render year text inside pill
+                        ctx.fillStyle = 'white';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(line.year, xPosition, pillY + pillHeight / 2);
+                    });
+                    ctx.restore();
+                }
+            }
+
+        const ctx1 = document.getElementById('myChart1');
+        const ctx2 = document.getElementById('myChart2');
+
+        const myChart1 = new Chart(ctx1, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                    label: 'Gas',
+                    data: sortData(dataList1),
+                    backgroundColor: 'rgb(0, 0, 10, 0.2)'
+                },
+                {
+                    label: 'Test',
+                    data: sortData(dataList2),
+                    backgroundColor: 'rgb(165,143,236,0.5)'
+                }
+            ],
+            },
+            options: {
+                responsive:false,
+                scales: {
+                    x: {
+                        min: 0,
+                        max: 61650,
+                        ticks: {
+                            stepSize: 12330
+                        },
+                        title: {
+                            display: true,
+                            text: 'Gp (MMscf)',
+                            padding: {
+                                top: 10,
+                                bottom: 30
+                            }
+                        }
+                    },
+                    y: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        },
+                        title: {
+                            display: true,
+                            text: 'Qg_n (MMscfd)',
+                            padding: {
+                                top: 10,
+                                bottom: 30
+                            }
+                        }
+                    },
+                    y2:{
+                        min: 0,
+                        max: 100,
+                        position: 'right',
+                        ticks: {
+                            stepSize: 20
+                        },
+                        title: {
+                            display: true,
+                            text: 'Qg_n (MMscfd)',
+                            padding: {
+                                top: 10,
+                                bottom: 30
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function async(context) {
+                                console.log("🚀 ~ async ~ context:", context)
+                                const item = context?.length ? context[0] : {}
+                                return Object.keys(item)?.length ? `${item.dataset?.label}\nQg_n: ${item.raw?.y}\nGp: ${item.raw?.x}\nDate: ${item.raw?.date || '-'}`:''
+                            },
+                            label: function(context) {
+                                return false;
+                            }
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    lineMarker:{
+                        borderColor:'grey',
+                        borderWidth: 1,
+                        borderDash: [6, 10]
+                    }
+                }
+            },
+            plugins:[
+                lineMarker
+            ]
+        });
+        const myChart2 = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        borderColor: 'grey',
+                        borderWidth: 1,
+                        radius: 0,
+                        data: data,
+                        label:'Choke Size (%)'
+                    },
+                    {
+                        borderColor: 'orange',
+                        borderWidth: 1,
+                        radius: 0,
+                        data: data2,
+                        label: 'WHFP'
+                    }],
+                },
+                options: {
+                    responsive: false,
+                    scales: {
+                        x: {
+                            // min: 0,
+                            // max: 61650,
+                            // ticks: {
+                            //     stepSize: 12330
+                            // },
+                            title: {
+                                display: true,
+                                text: 'WGR',
+                                padding: {
+                                    top: 10,
+                                    bottom: 30
+                                }
+                            }
+                        },
+                        y: {
+                            // min: 0,
+                            // max: 100,
+                            // ticks: {
+                            //     stepSize: 20
+                            // },
+                            title: {
+                                display: true,
+                                text: 'WHFP (barg)',
+                                padding: {
+                                    top: 10,
+                                    bottom: 30
+                                }
+                            }
+                        },
+                        y2: {
+                            // min: 0,
+                            // max: 100,
+                            position: 'right',
+                            // ticks: {
+                            //     stepSize: 20
+                            // },
+                            title: {
+                                display: true,
+                                text: 'WHFP (barg)',
+                                padding: {
+                                    top: 10,
+                                    bottom: 30
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                title: function async(context) {
+                                    const item = context?.length ? context[0] : {}
+                                    return Object.keys(item)?.length ? `${item.dataset?.label}\nQg_n: ${item.raw?.y}\nGp: ${item.raw?.x}\nDate: ${item.raw?.date || '-'}` : ''
+                                },
+                                label: function (context) {
+                                    return false;
+                                }
+                            }
+                        },
+                        legend: {
+                            display: true
+                        },
+                    }
+                },
+                // plugins: [
+                //     lineMarker
+                // ]
+            });
+    </script>
+</body>
+
+</html>
