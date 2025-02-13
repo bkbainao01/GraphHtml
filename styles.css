@@ -1,0 +1,18 @@
+h1{
+    margin: 100px 0px 10px 0px;
+    text-align: center;
+}
+.text-description {
+    color:rgb(44, 36, 36);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.chart-container {
+    width: 100%;
+}
+canvas {
+    margin: auto;
+    width: 1000px; /* Adjust based on your needs */
+    height: 500px;
+}
