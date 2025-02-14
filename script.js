@@ -161,6 +161,9 @@ const configScatterGraph = {
     },
     options: {
         responsive: false,
+        aspectRatio: 2,
+        maintainAspectRatio:false,
+        devicePixelRatio: 4,
         interaction: {
             mode: 'nearest',
             axis: 'xy', // ✅ ให้ sync ทั้ง X และ Y
@@ -269,6 +272,9 @@ const configLineProgressiveGraph = {
     },
     options: {
         responsive: false,
+        aspectRatio:2,
+        maintainAspectRatio:false,
+        devicePixelRatio: 4,
         animation,
         interaction: {
             mode: 'nearest',
@@ -367,12 +373,16 @@ const configLineProgressiveGraph2 = {
                 data: data2,
                 label:'WGR2',
                 fill: false,
-                backgroundColor: 'grey'
+                backgroundColor: 'grey',
+                display:false,
             }
         ]
     },
     options: {
         responsive: false,
+        aspectRatio:2,
+        maintainAspectRatio:false,
+        devicePixelRatio: 4,
         animation,
         interaction: {
             mode: 'nearest',
