@@ -69,18 +69,13 @@ const animation = {
 };
 const crosshairConfig = {
         line: {
-            enabled: true,
             color: 'gray',  // Line color
-            width: 1        // Line thickness
         },
         sync: {
             enabled: true,   // Sync across all charts
             group: 1, // Name of the sync group
             suppressTooltips: false // Show tooltips
         },
-        zoom: {
-            enabled: false // Disable zooming
-        }
     }
 // plugin
 const lineMarker = {
@@ -219,7 +214,6 @@ const configScatterGraph = {
         },
         plugins: {
             tooltip: {
-                enabled: true,
                 mode: 'interpolate',
                 intersect: false,
                 callbacks: {
@@ -284,7 +278,6 @@ const configLineProgressiveGraph = {
         plugins: {
             legend: true,
             tooltip: {
-                enabled: true,
                 mode: 'interpolate',
                 intersect: false,
                 callbacks: {
@@ -392,7 +385,6 @@ const configLineProgressiveGraph2 = {
         plugins: {
             legend: true,
             tooltip: {
-                enabled: true,
                 mode: 'interpolate',
                 intersect: false,
                 callbacks: {
